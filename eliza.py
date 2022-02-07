@@ -3,7 +3,6 @@ import re
 # Eliza chatbot project
 # Made with inspiration from https://web.njit.edu/~ronkowit/eliza.html
 
-
 # Initialize Regex objects at top of tree
 key_word_pattern = re.compile(r'i|you|my|if')
 reflexiveSwitch = re.compile(r'(I)(am|don\'t|)(\w+)')
@@ -12,21 +11,22 @@ question_pattern = re.compile(r'(do you)(\w+)')
 # posessive_pattern = re.compile()
 
 # Create stack of possible responses
-
+response_stack = []
 
 userQuit = False
-currentResponse = 'Hello, my name is Jamie. My friends call me Eliza.'
-currentMutation = ''
+current_response = 'Hello, my name is Jamie. My friends call me Eliza.'
+current_mutation = ''
+emotional_state_stack = []
 
 # Main loop
 while userQuit == False:
-    currentSentence = input(currentResponse + '\n')
+    currentSentence = input(current_response + '\n')
 
     # I am... -> Why are you...?
     if(reflexiveSwitch.search(currentSentence) != None):
-        currentTemplate = reflexiveSwitch.search(currentSentence)
-        currentMutation = 'Why are you ' + currentTemplate.group(2)
-        currentResponse = currentMutation
+        current_template = reflexiveSwitch.search(currentSentence)
+        current_mutation = 'Why are you ' + current_template.group(2)
+        current_response = current_mutation
     # until... -> What will happen after...?
     elif(active_verb_pattern.search(currentSentence)):
         pass
