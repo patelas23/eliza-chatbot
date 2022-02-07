@@ -1,35 +1,41 @@
 import re
 
 # Eliza chatbot project
+# Made with inspiration from https://web.njit.edu/~ronkowit/eliza.html
+
 
 # Initialize Regex objects at top of tree
-reflexiveSwitch = re.compile(r'(I am )(\w+)')
+reflexiveSwitch = re.compile(r'(I)(am|don\'t|)(\w+)')
+
 active_verb_pattern = re.compile(r'(\Bing)')
-posessive_pattern = re.compile()
+# posessive_pattern = re.compile()
+
+# Create stack of possible responses
 
 
 userQuit = False
-currentResponse = 'Hello, my name is Jamie. My friends call me Eliza.\n'
+currentResponse = 'Hello, my name is Jamie. My friends call me Eliza.'
 currentMutation = ''
 
 # Main loop
 while userQuit == False:
-    currentSentence = input(currentResponse)
+    currentSentence = input(currentResponse + '\n')
 
     ### Mutation of 'I am...' to 'Why are you...?'
-    rs = reflexiveSwitch.search(currentSentence)
     # print(rs.group(0))
     # print("Hey, I'm here.")
     if(reflexiveSwitch.search(currentSentence) != None):
-        print("Why are you...")
         # Save the rest of the input sentence
         # Append it to new statement
-
         currentTemplate = reflexiveSwitch.search(currentSentence)
-
         currentMutation = 'Why are you ' + currentTemplate.group(2)
+        currentResponse = currentMutation
 
+    elif(active_verb_pattern.search(currentSentence)):
+        pass
     elif():
+        pass
+    else: # Pull response from available stack
         pass
     
     if(currentSentence == 'quit'):
