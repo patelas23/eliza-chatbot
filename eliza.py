@@ -5,9 +5,10 @@ import re
 
 
 # Initialize Regex objects at top of tree
+key_word_pattern = re.compile(r'i|you|my|if')
 reflexiveSwitch = re.compile(r'(I)(am|don\'t|)(\w+)')
-
-active_verb_pattern = re.compile(r'(\Bing)')
+active_verb_pattern = re.compile(r'(\Bing)(\w+)')
+question_pattern = re.compile(r'(do you)(\w+)')
 # posessive_pattern = re.compile()
 
 # Create stack of possible responses
@@ -33,6 +34,7 @@ while userQuit == False:
     elif():
         pass
     # do you... -> I could hope to ..., maybe someday
+    # 
     # 
     else: # Pull response from available stack
         pass
