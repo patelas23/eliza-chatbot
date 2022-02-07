@@ -10,6 +10,8 @@ posessive_pattern = re.compile()
 
 userQuit = False
 currentResponse = 'Hello, my name is Jamie. My friends call me Eliza.\n'
+currentMutation = ''
+
 # Main loop
 while userQuit == False:
     currentSentence = input(currentResponse)
@@ -18,10 +20,15 @@ while userQuit == False:
     rs = reflexiveSwitch.search(currentSentence)
     # print(rs.group(0))
     # print("Hey, I'm here.")
-    if(reflexiveSwitch.search(currentSentence)):
+    if(reflexiveSwitch.search(currentSentence) != None):
         print("Why are you...")
         # Save the rest of the input sentence
         # Append it to new statement
+
+        currentTemplate = reflexiveSwitch.search(currentSentence)
+
+        currentMutation = 'Why are you ' + currentTemplate.group(2)
+
     elif():
         pass
     
@@ -63,7 +70,9 @@ print("I don't really care about names.")
 # if pet, dog, or cat is mentioned
 print("I love taking care of ...s!")
 
-# 
+# if 'ha' with repetitions
+print("Why are you laughing?")
+
 
 # TODO: Parsing function, extract and ranks keywords
 # Words following 'the', 'my', 'this' stored as nouns
