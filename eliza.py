@@ -21,20 +21,19 @@ currentMutation = ''
 while userQuit == False:
     currentSentence = input(currentResponse + '\n')
 
-    ### Mutation of 'I am...' to 'Why are you...?'
-    # print(rs.group(0))
-    # print("Hey, I'm here.")
+    # I am... -> Why are you...?
     if(reflexiveSwitch.search(currentSentence) != None):
-        # Save the rest of the input sentence
-        # Append it to new statement
         currentTemplate = reflexiveSwitch.search(currentSentence)
         currentMutation = 'Why are you ' + currentTemplate.group(2)
         currentResponse = currentMutation
-
+    # until... -> What will happen after...?
     elif(active_verb_pattern.search(currentSentence)):
         pass
+    # ... is so ... -> is ... always ...?
     elif():
         pass
+    # do you... -> I could hope to ..., maybe someday
+    # 
     else: # Pull response from available stack
         pass
     
