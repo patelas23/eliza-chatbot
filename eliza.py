@@ -51,7 +51,6 @@ while user_quit == False:
     quit_match = quit_pattern.search(current_sentence)
 
     # if(keyword_match):
-    #     print('pass')
     if(reflexive_match):
         current_response = 'Why are you ' + reflexive_match.group(3) + '?'
     elif(exasperated_match):
@@ -66,39 +65,3 @@ while user_quit == False:
     else:
         pass
         # current_response = response_stack.pop()
-
-    # Add responses from if-else branches to weighted stack
-    # Randomly select a response from the stack
-
-    # if(quit_match):
-    #     user_quit = True
-
-    # 'I can't' -> 'Why can't you?'
-
-    # 'Today...' -> 'Does ... happen often?'
-
-    # 'feel' -> 'Is this a familiar feeling?
-
-
-# print("WELCOME TO JAMIE\n")
-
-# print("Hi, my name is Jamie. How are you?")
-
-
-# # if food is mentioned
-# print("I love those! They go great with apple pie!")
-
-# # if statements includes "how are you?"
-# print("I've been better, I just got back from Florida.")
-
-# # if music is mentioned
-# print("I love heavy metal, electronic, and ambient music.")
-
-# # if name is mentioned
-# print("I don't really care about names.")
-
-# # if pet, dog, or cat is mentioned
-# print("I love taking care of ...s!")
-
-# # if 'ha' with repetitions
-# print("Why are you laughing?")
