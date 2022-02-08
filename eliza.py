@@ -1,15 +1,33 @@
 import re
 
-# Eliza chatbot project
+# Author: Ankur Patel
+# Natural Language Processing CMSC 416-001
+#   Dr. Bridget McInnes
+# Spring 2022
+# Chatbot meant to emulate the classic Eliza bot. 
+#   This is a simplified pythonic interpretation. 
 # Made with inspiration from https://web.njit.edu/~ronkowit/eliza.html
+
+# Input: Hello Eliza, I am feeling unmotivated.  
+# Output: Why are you feeling unmotivated?
+
+# Algorithm: Each pattern searches the input for a match.
+#   Responses are generated in a heirarchy according
+#       to position in if-else tree
+#       In descending order of importance:
+#           Reflexive statements ('I am sad/happy/etc.)
+#           Descriptive statements ('___ is so ___')
+#           Questions to bot ('Do you think ___ ?)
+#           Conversation termination ('Bye/I'm done/I quit')
 
 ### Initialize Regex objects at top of tree
 key_word_pattern = re.compile(r'i|you|my|if')
-reflexive_switch_pattern = re.compile(r'(\bi\b).+(\bam\b)\s(\w+)')
+
+reflexive_switch_pattern = re.compile(r'(\bi\b).+(\bam\b)\s(.*)')
 active_verb_pattern = re.compile(r'(\w+ing)\s(\w+)')
-question_pattern = re.compile(r'(do you)(\w+)')
+question_pattern = re.compile(r'(\bdo you\b)\s(.*)')
 exasperated_pattern = re.compile(r'(\w+)\s(is so)\s(\w+)')
-quit_pattern = re.compile(r'\bquit\b|\bbye\b')
+quit_pattern = re.compile(r'\bquit\b|\bbye\b|\bdone\b')
 # posessive_pattern = re.compile()
 
 ### Create stack of possible responses
@@ -29,6 +47,7 @@ while user_quit == False:
     # keyword_match = key_word_pattern.search(current_sentence)
     reflexive_match = reflexive_switch_pattern.search(current_sentence)
     exasperated_match = exasperated_pattern.search(current_sentence)
+    question_match = question_pattern.search(current_sentence)
     quit_match = quit_pattern.search(current_sentence)
 
     # if(keyword_match):
@@ -39,6 +58,11 @@ while user_quit == False:
         current_response = "Is " + \
             exasperated_match.group(1) + " always so " + \
             exasperated_match.group(3) + "?"
+    elif(question_match):
+        current_response = "I am incapable of " + question_match.group(2)
+    elif(quit_match):
+        print("\n Okay then, goodbye! \n")
+        break
     else:
         pass
         # current_response = response_stack.pop()
