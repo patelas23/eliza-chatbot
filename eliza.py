@@ -8,8 +8,12 @@ import re
 #   This is a simplified pythonic interpretation. 
 # Made with inspiration from https://web.njit.edu/~ronkowit/eliza.html
 
+# Usage: python -m /path/to/eliza/eliza.py
+#   Input sentences into command line to get responses from Eliza.
+
 # Input: Hello Eliza, I am feeling unmotivated.  
 # Output: Why are you feeling unmotivated?
+
 
 # Algorithm: Each pattern searches the input for a match.
 #   Responses are generated in a heirarchy according
